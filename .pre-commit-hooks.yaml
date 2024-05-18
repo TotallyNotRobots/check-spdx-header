@@ -1,0 +1,16 @@
+- id: check-spdx-header
+  name: check for missing license headers
+  description: Checks for SPDX license headers in python files
+  entry: check-spdx-header
+  language: python
+  types:
+    - python
+  stages: [commit, push, manual]
+- id: fix-spdx-header
+  name: Fix missing license headers
+  description: Checks for and fixes SPDX license headers in python files
+  entry: check-spdx-header --fix
+  language: python
+  types:
+    - python
+  stages: [commit, push, manual]

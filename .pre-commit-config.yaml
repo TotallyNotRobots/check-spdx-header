@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: "c2bbc92202e9080adcdf8fa2e99c9e4406a1f684"  # frozen: v3.26.0
+    hooks:
+      - id: commitizen
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "2c9f875913ee60ca25ce70243dc24d5b6415598c" # frozen: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/psf/black
+    rev: "3702ba224ecffbcec30af640c149f231d90aebdb" # frozen: 24.4.2
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/isort
+    rev: "c235f5e450b4b84e58d114ed4c589cbf454175a3" # frozen: 5.13.2
+    hooks:
+      - id: isort
+  - repo: https://github.com/andreoliwa/nitpick
+    rev: "36d4912df1f0bd2ed8cc535b57c5ba3b09ce3d46" # frozen: v0.35.0
+    hooks:
+      - id: nitpick
+  - repo: https://github.com/ikamensh/flynt
+    rev: "651c822fdcf45fffcf9743dc755085f32acb65e3" # frozen: 1.0.1
+    hooks:
+      - id: flynt
+minimum_pre_commit_version: 2.18.0
+default_install_hook_types:
+  - pre-commit
+  - pre-push
+  - commit-msg
