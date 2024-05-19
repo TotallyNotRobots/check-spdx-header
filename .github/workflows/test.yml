@@ -38,5 +38,11 @@ jobs:
     - name: Run static analysis
       run: hatch fmt --check
 
+    - name: Run type check
+      run: hatch run types:check
+
+    - name: Run pre-commit
+      run: hatch run pre-commit run --all
+
     - name: Run tests
       run: hatch test --python ${{ matrix.python-version }} --cover --randomize --parallel --retries 2 --retry-delay 1
