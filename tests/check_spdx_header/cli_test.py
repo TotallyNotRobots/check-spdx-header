@@ -51,7 +51,7 @@ def test_fix(tmp_path: Path) -> None:
     test_file = tmp_path / "test_file.py"
     test_file.write_text(
         """\
-#
+import foo
 """
     )
     result = runner.invoke(cli.check_spdx_header, ["-f", str(test_file)])
@@ -70,7 +70,56 @@ Fixed missing headers.
 # SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
 # SPDX-License-Identifier: MIT
+
+import foo
+"""
+    )
+
+
+def test_fix_empty_file(tmp_path: Path) -> None:
+    runner = CliRunner()
+    test_file = tmp_path / "test_file.py"
+    test_file.write_text("")
+    result = runner.invoke(cli.check_spdx_header, ["-f", str(test_file)])
+    assert result.exit_code == 1
+    assert (
+        result.output
+        == f"""\
+Fixing {test_file} ...
+Fixed missing headers.
+"""
+    )
+
+    assert (
+        test_file.read_text()
+        == """\
+# SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
+# SPDX-License-Identifier: MIT
+"""
+    )
+
+
+def test_fix_empty_file_newline(tmp_path: Path) -> None:
+    runner = CliRunner()
+    test_file = tmp_path / "test_file.py"
+    test_file.write_text("\n")
+    result = runner.invoke(cli.check_spdx_header, ["-f", str(test_file)])
+    assert result.exit_code == 1
+    assert (
+        result.output
+        == f"""\
+Fixing {test_file} ...
+Fixed missing headers.
+"""
+    )
+
+    assert (
+        test_file.read_text()
+        == """\
+# SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
+#
+# SPDX-License-Identifier: MIT
 """
     )
 
@@ -83,7 +132,6 @@ def test_check_not_missing(tmp_path: Path) -> None:
 # SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
 # SPDX-License-Identifier: MIT
-#
 """
     )
     result = runner.invoke(cli.check_spdx_header, ["-f", str(test_file)])
@@ -96,6 +144,5 @@ def test_check_not_missing(tmp_path: Path) -> None:
 # SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
 # SPDX-License-Identifier: MIT
-#
 """
     )

@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
 # SPDX-License-Identifier: MIT
+
 from __future__ import annotations
 
 import sys
@@ -62,7 +63,9 @@ pass_config = click.make_pass_decorator(Config, ensure=True)
 
 
 def is_header(line: str) -> bool:
-    return line.startswith("# SPDX-") or line.rstrip() == "#"
+    return (
+        line.startswith("# SPDX-") or line.rstrip() == "#" or not line.strip()
+    )
 
 
 def check(file: Path, config: Config) -> bool:
@@ -73,8 +76,8 @@ def check(file: Path, config: Config) -> bool:
         f"# SPDX-FileCopyrightText: {item}\n" for item in config.headers
     ] + ["#\n", f"# SPDX-License-Identifier: {config.license_spec}\n"]
 
-    while existing_header and existing_header[-1].rstrip() == "#":
-        existing_header.pop()
+    if existing_header != lines:
+        new_header.append("\n")
 
     if existing_header != new_header:
         # Fix
