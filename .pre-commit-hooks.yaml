@@ -3,14 +3,16 @@
   description: Checks for SPDX license headers in python files
   entry: check-spdx-header
   language: python
-  types:
-    - python
+  minimum_pre_commit_version: 2.9.2
+  require_serial: true
+  types_or: [python, pyi]
   stages: [commit, push, manual]
 - id: fix-spdx-header
   name: Fix missing license headers
   description: Checks for and fixes SPDX license headers in python files
   entry: check-spdx-header --fix
   language: python
-  types:
-    - python
+  minimum_pre_commit_version: 2.9.2
+  require_serial: true
+  types_or: [python, pyi]
   stages: [commit, push, manual]
