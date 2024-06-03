@@ -1,3 +1,9 @@
+## 0.1.0a3 (2024-06-03)
+
+### Fix
+
+- improve handling of blank lines following headers
+
 ## 0.1.0a2 (2024-05-19)
 
 ### Feat
