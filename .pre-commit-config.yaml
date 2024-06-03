@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: "c2bbc92202e9080adcdf8fa2e99c9e4406a1f684"  # frozen: v3.26.0
+    rev: "e9aa5d979ea6fd14dcf59c6bd3836bef17d386c1"  # frozen: v3.27.0
     hooks:
       - id: commitizen
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -28,6 +28,12 @@ repos:
     rev: "651c822fdcf45fffcf9743dc755085f32acb65e3" # frozen: 1.0.1
     hooks:
       - id: flynt
+  - repo: https://github.com/codespell-project/codespell
+    rev: '193cd7d27cd571f79358af09a8fb8997e54f8fff'  # frozen: v2.3.0
+    hooks:
+      - additional_dependencies:
+          - tomli ; python_version < '3.11'
+        id: codespell
 minimum_pre_commit_version: 2.18.0
 default_install_hook_types:
   - pre-commit
