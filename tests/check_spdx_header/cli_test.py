@@ -76,6 +76,71 @@ import foo
     )
 
 
+def test_fix_missing_line_break(tmp_path: Path) -> None:
+    runner = CliRunner()
+    test_file = tmp_path / "test_file.py"
+    test_file.write_text(
+        """\
+# SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+import foo
+"""
+    )
+    result = runner.invoke(cli.check_spdx_header, ["-f", str(test_file)])
+    assert result.exit_code == 1
+    assert (
+        result.output
+        == f"""\
+Fixing {test_file} ...
+Fixed missing headers.
+"""
+    )
+
+    assert (
+        test_file.read_text()
+        == """\
+# SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+import foo
+"""
+    )
+
+
+def test_fix_existing_2_blank_lines(tmp_path: Path) -> None:
+    runner = CliRunner()
+    test_file = tmp_path / "test_file.py"
+    test_file.write_text(
+        """\
+# SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+
+def foo():
+    ...
+"""
+    )
+    result = runner.invoke(cli.check_spdx_header, ["-f", str(test_file)])
+    assert result.exit_code == 0
+    assert result.output == ""
+
+    assert (
+        test_file.read_text()
+        == """\
+# SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+
+def foo():
+    ...
+"""
+    )
+
+
 def test_fix_empty_file(tmp_path: Path) -> None:
     runner = CliRunner()
     test_file = tmp_path / "test_file.py"

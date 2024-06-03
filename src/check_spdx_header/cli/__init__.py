@@ -14,6 +14,7 @@ import click
 from click.core import ParameterSource
 
 from check_spdx_header._version import __version__
+from check_spdx_header.util import get_first_existing_file
 
 if sys.version_info >= (3, 11):
     import tomllib
@@ -68,6 +69,14 @@ def is_header(line: str) -> bool:
     )
 
 
+def strip_lines(lines: list[str]) -> list[str]:
+    out = lines.copy()
+    while out and not out[-1].strip():
+        out.pop()
+
+    return out
+
+
 def check(file: Path, config: Config) -> bool:
     text = file.read_text(encoding="utf-8")
     lines = text.splitlines(keepends=True)
@@ -76,10 +85,19 @@ def check(file: Path, config: Config) -> bool:
         f"# SPDX-FileCopyrightText: {item}\n" for item in config.headers
     ] + ["#\n", f"# SPDX-License-Identifier: {config.license_spec}\n"]
 
-    if existing_header != lines:
-        new_header.append("\n")
+    filtered_lines = strip_lines(lines)
+    filtered_existing_header = strip_lines(existing_header)
+    filtered_new_header = strip_lines(new_header)
 
-    if existing_header != new_header:
+    if filtered_existing_header != filtered_lines:
+        # If there is text after the header, add a blank line to separate them
+        new_header.append("\n")
+        # Preserve the final blank line on existing headers
+        filtered_new_header.append("\n")
+        if existing_header and not existing_header[-1].strip():
+            filtered_existing_header.append("\n")
+
+    if filtered_existing_header != filtered_new_header:
         # Fix
         if config.fix:
             click.echo(f"Fixing {file} ...", err=True)
@@ -95,15 +113,6 @@ def check(file: Path, config: Config) -> bool:
 
 
 FILES = ["pyproject.toml", "spdx_check.toml"]
-
-
-def get_first_existing_file(files: Sequence[str | Path]) -> Path | None:
-    for file in files:
-        p = Path(file)
-        if p.exists():
-            return p
-
-    return None
 
 
 def read_config(

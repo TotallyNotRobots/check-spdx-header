@@ -137,6 +137,7 @@ extend-safe-fixes = [
   "D200",
   "UP006",
   "UP007",
+  "FA102",
 ]
 extend-ignore = ["D"]
 # select = ["ALL"]
