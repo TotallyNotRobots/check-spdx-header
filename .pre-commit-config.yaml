@@ -21,7 +21,7 @@ repos:
     hooks:
       - id: nitpick
   - repo: "https://github.com/TotallyNotRobots/check-spdx-header"
-    rev: '2a52cf804e6dedd045e765185382d4f916ae2f3f'  # frozen: 0.1.0a2
+    rev: 'c5b3cb2f735d44f46ad132426fca49f418d73ba6'  # frozen: 0.1.0a3
     hooks:
       - id: fix-spdx-header
   - repo: https://github.com/ikamensh/flynt
