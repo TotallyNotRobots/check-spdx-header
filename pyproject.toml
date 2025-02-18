@@ -19,6 +19,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
@@ -72,7 +73,7 @@ tests = ["tests", "*/check-spdx-header/tests"]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 [tool.nitpick]
-style = ["gh://TotallyNotRobots/nitpick/app-style.toml"]
+style = ["gh://TotallyNotRobots/nitpick/app-style-3.8.toml"]
 
 [tool.isort]
 line_length = 80

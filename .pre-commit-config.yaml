@@ -34,6 +34,12 @@ repos:
       - additional_dependencies:
           - tomli ; python_version < '3.11'
         id: codespell
+  - repo: https://github.com/asottile/pyupgrade
+    rev: '12af25eb252deaaecb6b259df40d01f42e716dc3'  # frozen: v3.15.2
+    hooks:
+      - id: pyupgrade
+        args:
+          - --py38-plus
 minimum_pre_commit_version: 2.18.0
 default_install_hook_types:
   - pre-commit
