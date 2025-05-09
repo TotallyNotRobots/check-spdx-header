@@ -1,3 +1,9 @@
+## 0.1.1 (2025-05-09)
+
+### Fix
+
+- **pre-commit**: migrate to new pre-commit stages
+
 ## 0.1.0 (2025-02-18)
 
 ## 0.1.0a3 (2024-06-03)
