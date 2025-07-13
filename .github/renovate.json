@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "enabled": true
+    }
+  ],
+  "pre-commit": {
+    "enabled": true
+  },
+  "pip_requirements": {
+    "managerFilePatterns": [
+      "/^requirements/.*\\.txt$/",
+      "/^requirements/.*\\.py3\\.[0-9]+\\.txt$/",
+      "/^requirements\\.txt$/"
+    ]
+  }
+}
