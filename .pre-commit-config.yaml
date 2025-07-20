@@ -13,7 +13,7 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/pycqa/isort
-    rev: "0a0b7a830386ba6a31c2ec8316849ae4d1b8240d"  # frozen: 6.0.0
+    rev: "0.0.9"  # frozen: 6.0.0
     hooks:
       - id: isort
   - repo: https://github.com/andreoliwa/nitpick
