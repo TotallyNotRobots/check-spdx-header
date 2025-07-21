@@ -9,7 +9,7 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/psf/black
-    rev: "8a737e727ac5ab2f1d4cf5876720ed276dc8dc4b"  # frozen: 25.1.0
+    rev: "25.1.0"  # frozen: 25.1.0
     hooks:
       - id: black
   - repo: https://github.com/pycqa/isort
