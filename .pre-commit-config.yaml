@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: "186dd18042ad30269e157e17db271a34b71e3bcd"  # frozen: v4.8.4
+    rev: "98bba31fe6c9214cd49767e41802fa099d0c47a4"  # frozen: v4.9.0
     hooks:
       - id: commitizen
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -17,7 +17,7 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/andreoliwa/nitpick
-    rev: "36d4912df1f0bd2ed8cc535b57c5ba3b09ce3d46" # frozen: v0.35.0
+    rev: "2bdfd4e7aa1fa2eea0d83fd0c0e0ba4fb55ba1e3"  # frozen: v0.36.0
     hooks:
       - id: nitpick
   - repo: "https://github.com/TotallyNotRobots/check-spdx-header"
