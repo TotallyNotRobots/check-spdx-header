@@ -7,15 +7,13 @@ name = "check-spdx-header"
 dynamic = ["version"]
 description = "pre-commit hook to validate spdx license comments"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 license = "MIT"
 keywords = []
 authors = [{ name = "linuxdaemon", email = "linuxdaemon.irc@gmail.com" }]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -58,7 +56,7 @@ cov-combine = "coverage combine"
 cov-report = ["coverage report --show-missing --skip-covered", "coverage xml"]
 
 [[tool.hatch.envs.hatch-test.matrix]]
-python = ["3.13", "3.12", "3.11", "3.10", "3.9", "3.8"]
+python = ["3.13", "3.12", "3.11", "3.10"]
 
 [tool.hatch.envs.types]
 extra-dependencies = [
@@ -84,7 +82,7 @@ tests = ["tests", "*/check-spdx-header/tests"]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 [tool.nitpick]
-style = ["gh://TotallyNotRobots/nitpick/app-style-3.8.toml"]
+style = ["gh://TotallyNotRobots/nitpick/app-style-3.10.toml"]
 
 [tool.isort]
 line_length = 80
@@ -93,10 +91,10 @@ float_to_top = true
 
 [tool.black]
 line-length = 80
-target-version = ["py38"]
+target-version = ["py310"]
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.10"
 ignore_missing_imports = true
 show_error_codes = true
 warn_unused_ignores = true
@@ -124,7 +122,7 @@ headers = ["2024-present linuxdaemon <linuxdaemon.irc@gmail.com>"]
 
 [tool.ruff]
 line-length = 80
-target-version = 'py38'
+target-version = 'py310'
 
 [tool.ruff.format]
 docstring-code-format = true

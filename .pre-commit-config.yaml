@@ -39,7 +39,7 @@ repos:
     hooks:
       - id: pyupgrade
         args:
-          - --py38-plus
+          - --py310-plus
 minimum_pre_commit_version: 2.18.0
 default_install_hook_types:
   - pre-commit
