@@ -12,19 +12,16 @@ license = "MIT"
 keywords = []
 authors = [{ name = "linuxdaemon", email = "linuxdaemon.irc@gmail.com" }]
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = [
-    "click==8.1.8",
-    "tomli==2.2.1 ; python_version < '3.11'",
-]
+dependencies = ["click==8.1.8", "tomli==2.2.1 ; python_version < '3.11'"]
 
 [project.urls]
 Documentation = "https://github.com/TotallyNotRobots/check-spdx-header#readme"
@@ -41,10 +38,7 @@ source = "vcs"
 version-file = "src/check_spdx_header/_version.py"
 
 [tool.hatch.envs.default]
-dependencies = [
-    "pre-commit==4.1.0",
-    "pytest==8.3.5",
-]
+dependencies = ["pre-commit==4.1.0", "pytest==8.3.5"]
 
 [tool.hatch.envs.hatch-test]
 default-args = ["tests", "src"]
@@ -59,9 +53,7 @@ cov-report = ["coverage report --show-missing --skip-covered", "coverage xml"]
 python = ["3.13", "3.12", "3.11", "3.10"]
 
 [tool.hatch.envs.types]
-extra-dependencies = [
-    "mypy==1.18.2",
-]
+extra-dependencies = ["mypy==1.18.2"]
 [tool.hatch.envs.types.scripts]
 check = "mypy {args:src/check_spdx_header tests}"
 
@@ -73,8 +65,8 @@ omit = ["src/check_spdx_header/_version.py"]
 
 [tool.coverage.paths]
 check_spdx_header = [
-  "src/check_spdx_header",
-  "*/check-spdx-header/src/check_spdx_header",
+    "src/check_spdx_header",
+    "*/check-spdx-header/src/check_spdx_header",
 ]
 tests = ["tests", "*/check-spdx-header/tests"]
 
@@ -132,29 +124,30 @@ skip-magic-trailing-comma = true
 [tool.ruff.lint]
 ignore-init-module-imports = false
 extend-safe-fixes = [
-  "EM101",
-  "EM102",
-  "EM103",
-  "F401",
-  "FLY002",
-  "TCH001",
-  "TCH002",
-  "TRY400",
-  "SIM117",
-  "SIM108",
-  "ANN201",
-  "D415",
-  "D200",
-  "UP006",
-  "UP007",
-  "FA102",
+    "TCH003",
+    "EM101",
+    "EM102",
+    "EM103",
+    "F401",
+    "FLY002",
+    "TCH001",
+    "TCH002",
+    "TRY400",
+    "SIM117",
+    "SIM108",
+    "ANN201",
+    "D415",
+    "D200",
+    "UP006",
+    "UP007",
+    "FA102",
 ]
 extend-ignore = ["D"]
 # select = ["ALL"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*.py" = [
-  "S101", # Allow asserts in tests
+    "S101", # Allow asserts in tests
 ]
 
 [tool.ruff.lint.pycodestyle]

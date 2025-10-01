@@ -8,13 +8,16 @@ import sys
 from dataclasses import dataclass, field
 from itertools import takewhile
 from pathlib import Path
-from typing import Sequence, TypeVar
+from typing import TYPE_CHECKING, TypeVar
 
 import click
 from click.core import ParameterSource
 
 from check_spdx_header._version import __version__
 from check_spdx_header.util import get_first_existing_file
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
 
 if sys.version_info >= (3, 11):
     import tomllib
