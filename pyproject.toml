@@ -105,9 +105,11 @@ aggressive = true
 
 [tool.commitizen]
 name = "cz_conventional_commits"
+version_scheme = "semver2"
 version_provider = "scm"
 update_changelog_on_bump = true
 major_version_zero = true
+annotated_tag = true
 
 [tool.check-spdx-header]
 headers = ["2024-present linuxdaemon <linuxdaemon.irc@gmail.com>"]
