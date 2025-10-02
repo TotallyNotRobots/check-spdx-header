@@ -1,3 +1,19 @@
+## 0.2.0 (2025-10-02)
+
+### Feat
+
+- drop python 3.8 and 3.9 support
+- auto-update pre-commit hashes
+
+### Fix
+
+- **deps**: update dependency click to v8.3.0
+- **deps**: correct mypy version
+
+### Refactor
+
+- run pyupgrade
+
 ## 0.1.1 (2025-05-09)
 
 ### Fix
