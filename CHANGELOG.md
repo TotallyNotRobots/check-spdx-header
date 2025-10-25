@@ -1,3 +1,13 @@
+## 0.3.0 (2025-10-25)
+
+### Feat
+
+- add support for python 3.14
+
+### Fix
+
+- **deps**: update dependency tomli to v2.3.0
+
 ## 0.2.0 (2025-10-02)
 
 ### Feat
