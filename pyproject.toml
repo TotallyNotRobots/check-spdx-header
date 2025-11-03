@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 keywords = []
-authors = [{ name = "linuxdaemon", email = "linuxdaemon.irc@gmail.com" }]
+authors = [{name = "linuxdaemon", email = "linuxdaemon.irc@gmail.com"}]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python",
@@ -44,6 +44,7 @@ dependencies = ["pre-commit==4.3.0", "pytest==8.4.2"]
 [tool.hatch.envs.hatch-test]
 default-args = ["tests", "src"]
 extra-args = ["-vv"]
+
 [tool.hatch.envs.hatch-test.scripts]
 run = "pytest{env:HATCH_TEST_ARGS:} {args}"
 run-cov = "coverage run -m pytest{env:HATCH_TEST_ARGS:} {args}"
@@ -55,6 +56,7 @@ python = ["3.14", "3.13", "3.12", "3.11", "3.10"]
 
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy==1.18.2"]
+
 [tool.hatch.envs.types.scripts]
 check = "mypy {args:src/check_spdx_header tests}"
 
@@ -63,6 +65,7 @@ source_pkgs = ["check_spdx_header", "tests"]
 branch = true
 # parallel = true
 omit = ["src/check_spdx_header/_version.py"]
+relative_files = true
 
 [tool.coverage.paths]
 check_spdx_header = [
@@ -72,7 +75,14 @@ check_spdx_header = [
 tests = ["tests", "*/check-spdx-header/tests"]
 
 [tool.coverage.report]
-exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+exclude_lines = [
+    "no cov",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "pragma: no cover",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
 
 [tool.nitpick]
 style = ["gh://TotallyNotRobots/nitpick/app-style-3.10.toml"]
@@ -97,20 +107,14 @@ strict = true
 disallow_untyped_calls = true
 disallow_untyped_defs = true
 allow_redefinition = false
+warn_unused_configs = true
+enable_error_code = ["deprecated"]
 
 [tool.flynt]
 transform-concats = true
 transform-joins = true
 line-length = 120
 aggressive = true
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-version_scheme = "semver2"
-version_provider = "scm"
-update_changelog_on_bump = true
-major_version_zero = true
-annotated_tag = true
 
 [tool.check-spdx-header]
 headers = ["2024-present linuxdaemon <linuxdaemon.irc@gmail.com>"]
@@ -146,7 +150,6 @@ extend-safe-fixes = [
     "FA102",
 ]
 extend-ignore = ["D"]
-# select = ["ALL"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*.py" = [
@@ -165,3 +168,8 @@ convention = "google"
 [tool.autoflake]
 remove-all-unused-imports = true
 in-place = true
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = ["--doctest-modules"]
+filterwarnings = ["error"]
