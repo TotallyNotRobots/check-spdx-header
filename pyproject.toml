@@ -39,7 +39,7 @@ source = "vcs"
 version-file = "src/check_spdx_header/_version.py"
 
 [tool.hatch.envs.default]
-dependencies = ["pre-commit==4.3.0", "pytest==8.4.2"]
+dependencies = ["pre-commit==4.4.0", "pytest==8.4.2"]
 
 [tool.hatch.envs.hatch-test]
 default-args = ["tests", "src"]
