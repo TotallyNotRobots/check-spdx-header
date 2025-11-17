@@ -108,7 +108,7 @@ disallow_untyped_calls = true
 disallow_untyped_defs = true
 allow_redefinition = false
 warn_unused_configs = true
-enable_error_code = ["deprecated"]
+enable_error_code = ["deprecated", "ignore-without-code"]
 
 [tool.flynt]
 transform-concats = true
