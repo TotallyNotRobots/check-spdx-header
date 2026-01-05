@@ -72,7 +72,7 @@ repos:
         additional_dependencies:
           - tomli ; python_version < '3.11'
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 9f3ec868c0429155a46b4819b625d47a8522a3d5  # frozen: v4.10.0
+    rev: 2e4f4b26b5b0a0c0ebc660c1f78aca1e28d912bd  # frozen: v4.11.1
     hooks:
       - id: commitizen
   - repo: local
