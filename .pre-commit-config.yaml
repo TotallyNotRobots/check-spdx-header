@@ -37,7 +37,7 @@ repos:
     hooks:
       - id: ssort
   - repo: https://github.com/psf/black
-    rev: 782e5605c86aab56be6f905da10dcd3e463fd9c2  # frozen: 25.12.0
+    rev: 6305bf1ae645ab7541be4f5028a86239316178eb  # frozen: 26.1.0
     hooks:
       - id: black
   - repo: https://github.com/pycqa/isort
@@ -72,7 +72,7 @@ repos:
         additional_dependencies:
           - tomli ; python_version < '3.11'
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 9f3ec868c0429155a46b4819b625d47a8522a3d5  # frozen: v4.10.0
+    rev: 5857050259653556030b6b1f19f53e8868a427f6  # frozen: v4.12.1
     hooks:
       - id: commitizen
   - repo: local
@@ -98,7 +98,7 @@ repos:
     hooks:
       - id: autoflake
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: '19b28a9f0a0102b30776f054bea4176e7af50dbe'  # frozen: v2.15.0
+    rev: '4380fbb73a154b5f5624794c1c78d9719ccc860f'  # frozen: v2.16.0
     hooks:
       - id: pretty-format-toml
         args:
