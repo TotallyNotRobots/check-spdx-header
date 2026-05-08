@@ -1,3 +1,12 @@
+## 0.3.1 (2026-05-08)
+
+### Fix
+
+- **deps**: update dependency click to v8.3.3
+- **deps**: update dependency tomli to v2.4.1
+- **deps**: update dependency tomli to v2.3.1
+- **deps**: update dependency click to v8.3.1
+
 ## 0.3.0 (2025-10-25)
 
 ### Feat
