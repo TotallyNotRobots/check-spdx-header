@@ -52,6 +52,7 @@ Fixed missing headers.
 # SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
 # SPDX-License-Identifier: MIT
+
 import foo
 """
 
@@ -82,6 +83,7 @@ Fixed missing headers.
 # SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
 # SPDX-License-Identifier: MIT
+
 import foo
 """
 
@@ -95,6 +97,8 @@ def test_fix_existing_2_blank_lines(tmp_path: Path) -> None:
 # SPDX-FileCopyrightText: 2024-present linuxdaemon <linuxdaemon.irc@gmail.com>
 #
 # SPDX-License-Identifier: MIT
+
+
 def foo():
     ...
 """
