@@ -72,7 +72,7 @@ repos:
         additional_dependencies:
           - tomli ; python_version < '3.11'
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 460d83c603b0ddf80dc2a11d5e7ec2f464142737  # frozen: v4.15.0
+    rev: e5c25c3d6d68edd767ae513d48c55f63d21b4b9e  # frozen: v4.15.1
     hooks:
       - id: commitizen
   - repo: local
@@ -110,7 +110,7 @@ repos:
           - --inline-comment-spaces
           - '1'
   - repo: https://github.com/TotallyNotRobots/check-spdx-header
-    rev: '676e6f28a70426914a2e286cbb53696fe2a19381'  # frozen: 0.3.0
+    rev: '07ff863131799b08ae6bd94ac52f3c69aa95f476'  # frozen: 0.3.1
     hooks:
       - id: fix-spdx-header
 minimum_pre_commit_version: 4.3.0
