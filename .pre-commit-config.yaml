@@ -37,7 +37,7 @@ repos:
     hooks:
       - id: ssort
   - repo: https://github.com/psf/black
-    rev: c6755bb741b6481d6b3d3bb563c83fa060db96c9  # frozen: 26.3.1
+    rev: d2490e24dad33b8f68c77602ee29160de0fea24b  # frozen: 26.5.0
     hooks:
       - id: black
   - repo: https://github.com/pycqa/isort
@@ -72,7 +72,7 @@ repos:
         additional_dependencies:
           - tomli ; python_version < '3.11'
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: e5c25c3d6d68edd767ae513d48c55f63d21b4b9e  # frozen: v4.15.1
+    rev: 0fedbbe40de438359fdf74bb0ef645ed23063999  # frozen: v4.16.2
     hooks:
       - id: commitizen
   - repo: local
