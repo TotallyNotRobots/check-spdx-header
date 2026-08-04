@@ -33,7 +33,7 @@ repos:
           - --no-sort-keys
       - id: check-toml
   - repo: https://github.com/bwhmather/ssort
-    rev: fb5ed1dd650d0920820506ea817bfd80942b9510  # frozen: 0.16.0
+    rev: 1edc5807f7f55ec843ab040392ea4247d947cda9  # frozen: 0.17.0
     hooks:
       - id: ssort
   - repo: https://github.com/psf/black
