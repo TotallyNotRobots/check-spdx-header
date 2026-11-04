@@ -19,6 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
@@ -54,7 +55,7 @@ cov-combine = "coverage combine"
 cov-report = ["coverage report --show-missing --skip-covered", "coverage xml"]
 
 [[tool.hatch.envs.hatch-test.matrix]]
-python = ["3.14", "3.13", "3.12", "3.11", "3.10"]
+python = ["3.15", "3.14", "3.13", "3.12", "3.11", "3.10"]
 
 [tool.hatch.envs.types]
 post-install-commands = []
