@@ -1,3 +1,16 @@
+## 0.4.0 (2026-11-04)
+
+### Feat
+
+- add python 3.15 support
+
+### Fix
+
+- **deps**: update dependency tomli to v2.5.0
+- remove unused asyncio pytest option
+- format authors field in pyproject.toml
+- **deps**: update dependency click to v8.5.0
+
 ## 0.3.2 (2026-08-04)
 
 ### Fix
