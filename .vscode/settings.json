@@ -1,5 +1,16 @@
 {
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
-    "python.analysis.inlayHints.pytestParameters": true,
-    "python-envs.pythonProjects": []
+    "python.analysis.enablePytestSupport": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "python.analysis.diagnosticMode": "workspace",
+    "autoDocstringPy.docstringFormat": "google-notypes",
+    "autoDocstringPy.startOnNewLine": true,
+    "python-envs.defaultEnvManager": "pypa.hatch:hatch",
+    "python-envs.defaultPackageManager": "pypa.hatch:hatch"
 }

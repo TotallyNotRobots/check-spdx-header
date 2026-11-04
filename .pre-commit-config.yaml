@@ -6,6 +6,7 @@ repos:
         args:
           - --markdown-linebreak-ext=md,markdown
       - id: end-of-file-fixer
+        exclude: '.basedpyright/baseline.json'
       - id: check-yaml
       - id: check-added-large-files
       - id: check-ast
@@ -25,7 +26,7 @@ repos:
       - id: check-json
         exclude: ^\.(vscode|devcontainer)/
       - id: pretty-format-json
-        exclude: ^\.(vscode|devcontainer)/
+        exclude: ^\.((vscode|devcontainer)/|basedpyright/baseline\.json)
         args:
           - --indent
           - '4'
@@ -36,14 +37,6 @@ repos:
     rev: 1edc5807f7f55ec843ab040392ea4247d947cda9  # frozen: 0.17.0
     hooks:
       - id: ssort
-  - repo: https://github.com/psf/black
-    rev: 87928e6d6761a4a6d22250e1fee5601b3998086e  # frozen: 26.5.1
-    hooks:
-      - id: black
-  - repo: https://github.com/pycqa/isort
-    rev: 131f4adcd5582bfc53928ab0d740eceb8b506b6c  # frozen: 9.0.1
-    hooks:
-      - id: isort
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: 3a6eb0fadf60b3cccfd80bad9dbb6fae7e47b316
     hooks:
@@ -77,12 +70,6 @@ repos:
       - id: commitizen
   - repo: local
     hooks:
-      - id: hatch-fmt
-        entry: hatch fmt
-        language: system
-        name: hatch fmt
-        types:
-          - python
       - id: hatch-types
         entry: hatch run types:check
         language: system
@@ -113,6 +100,17 @@ repos:
     rev: '7b32924b95a8a529c388fd5abf41dcca901b42bc'  # frozen: 0.3.2
     hooks:
       - id: fix-spdx-header
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: '25bcf95026b96e2dd3c0aec3090c3d6ef6ca2e6c'  # frozen: v0.17.3
+    hooks:
+      - id: ruff-check
+        args:
+          - --fix
+        types_or:
+          - python
+          - pyi
+          - pyproject
+      - id: ruff-format
 minimum_pre_commit_version: 4.3.0
 default_install_hook_types:
   - pre-commit

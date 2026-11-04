@@ -39,9 +39,11 @@ source = "vcs"
 version-file = "src/check_spdx_header/_version.py"
 
 [tool.hatch.envs.default]
-dependencies = ["pre-commit==4.6.2", "pytest==9.1.1"]
+dependencies = ["pre-commit==4.7.0", "pytest==9.1.1", "basedpyright==1.40.2"]
+post-install-commands = ["hatch run pre-commit:install"]
 
 [tool.hatch.envs.hatch-test]
+post-install-commands = []
 default-args = ["tests", "src"]
 extra-args = ["-vv"]
 
@@ -55,10 +57,20 @@ cov-report = ["coverage report --show-missing --skip-covered", "coverage xml"]
 python = ["3.14", "3.13", "3.12", "3.11", "3.10"]
 
 [tool.hatch.envs.types]
-extra-dependencies = ["mypy==2.3.1"]
+post-install-commands = []
+extra-dependencies = ["basedpyright==1.40.2"]
 
 [tool.hatch.envs.types.scripts]
-check = "mypy {args:src/check_spdx_header tests}"
+check = "basedpyright {args:src/check_spdx_header tests}"
+
+[tool.hatch.envs.pre-commit]
+post-install-commands = []
+extra-dependencies = ["pre-commit==4.7.0"]
+
+[tool.hatch.envs.pre-commit.scripts]
+run = ["pre-commit run {args:--all}"]
+install = ["pre-commit install {args:-f}"]
+update = ["pre-commit autoupdate --freeze"]
 
 [tool.coverage.run]
 source_pkgs = ["check_spdx_header", "tests"]
@@ -85,30 +97,10 @@ exclude_lines = [
 ]
 
 [tool.nitpick]
-style = ["gh://TotallyNotRobots/nitpick/app-style-3.10.toml"]
-
-[tool.isort]
-line_length = 80
-profile = "black"
-float_to_top = true
-
-[tool.black]
-line-length = 80
-target-version = ["py310"]
-
-[tool.mypy]
-python_version = "3.10"
-ignore_missing_imports = true
-show_error_codes = true
-warn_unused_ignores = true
-warn_redundant_casts = true
-extra_checks = true
-strict = true
-disallow_untyped_calls = true
-disallow_untyped_defs = true
-allow_redefinition = false
-warn_unused_configs = true
-enable_error_code = ["deprecated", "ignore-without-code"]
+style = [
+    "gh://TotallyNotRobots/nitpick/app-style-3.10.toml",
+    "gh://TotallyNotRobots/nitpick/styles/hatch/common.toml",
+]
 
 [tool.flynt]
 transform-concats = true
@@ -129,16 +121,12 @@ line-ending = "lf"
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
-ignore-init-module-imports = false
 extend-safe-fixes = [
-    "TCH003",
     "EM101",
     "EM102",
     "EM103",
     "F401",
     "FLY002",
-    "TCH001",
-    "TCH002",
     "TRY400",
     "SIM117",
     "SIM108",
@@ -149,7 +137,7 @@ extend-safe-fixes = [
     "UP007",
     "FA102",
 ]
-extend-ignore = ["D"]
+ignore = ["D"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*.py" = [
@@ -169,7 +157,15 @@ convention = "google"
 remove-all-unused-imports = true
 in-place = true
 
-[tool.pytest.ini_options]
-minversion = "8.0"
+[tool.pytest]
+minversion = "9.0"
 addopts = ["--doctest-modules"]
 filterwarnings = ["error"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.basedpyright]
+analyzeUnannotatedFunctions = true
+reportUnusedCallResult = "none"
+reportImplicitStringConcatenation = "none"
+reportImportCycles = "none"
+pythonVersion = "3.10"

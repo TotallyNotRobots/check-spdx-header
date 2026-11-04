@@ -163,3 +163,4 @@ cython_debug/
 
 src/*/_version.py
 .cache/nitpick/
+junit.xml

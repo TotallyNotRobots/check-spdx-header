@@ -1,0 +1,44 @@
+{
+  "name": "Python 3",
+  "dockerFile": "./Dockerfile",
+  "context": "..",
+  "mounts": [
+    "source=${localEnv:HOME}/.config/gh,target=/home/vscode/.config/gh,type=bind,consistency=cached,bind-create-src"
+  ],
+  "features": {
+    "ghcr.io/devcontainers-extra/features/zsh-plugins": {
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "hatch run python --version",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "tamasfe.even-better-toml",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "EditorConfig.EditorConfig",
+        "GitHub.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "redhat.vscode-yaml",
+        "sunipkm.autodocstringpy",
+        "charliermarsh.ruff",
+        "pypa.hatch",
+        "detachhead.basedpyright"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "~/.virtualenvs/polymatch/bin/python",
+        "python.testing.pytestArgs": [
+          "--no-cov"
+        ],
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  }
+}

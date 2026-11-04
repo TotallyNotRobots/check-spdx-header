@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "tamasfe.even-better-toml",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "EditorConfig.EditorConfig",
+        "GitHub.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "redhat.vscode-yaml",
+        "sunipkm.autodocstringpy",
+        "charliermarsh.ruff",
+        "pypa.hatch",
+        "detachhead.basedpyright"
+    ]
+}

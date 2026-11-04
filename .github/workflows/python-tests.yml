@@ -52,13 +52,10 @@ jobs:
     - name: Run type check
       run: hatch run types:check
 
-    - name: Run formatter
-      run: hatch fmt
-
     - name: Run pre-commit
-      run: hatch run pre-commit run --all
+      run: hatch run pre-commit:run --all
       env:
-        SKIP: nitpick,hatch-fmt,hatch-types
+        SKIP: nitpick,hatch-types
 
     - name: Run tests
       run: hatch test --python ${{ matrix.python-version }} --cover --randomize --retries 2 --retry-delay 1
